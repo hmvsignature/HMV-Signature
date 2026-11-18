@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check-in Nutricional | HMV Signature</title>
+  <!-- Carregamento não-bloqueante de fontes refinadas com fallbacks locais imediatos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@600;700;800&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+
+  <style>
+    :root {
+      --hmv-navy: #0D2B52;
+      --hmv-deep: #153E75;
+      --hmv-blue: #2784C5;
+      --hmv-sky: #6AC4E8;
+      --hmv-light: #EBF6FC;
+      --hmv-ice: #F5FAFD;
+      --hmv-card: #FFFFFF;
+      --hmv-border: #D7E7F3;
+      --hmv-muted: #536B88;
+      --hmv-danger: #DC2626;
+      --hmv-danger-bg: #FEF2F2;
+      --hmv-whatsapp: #25D366;
+      --hmv-whatsapp-hover: #1EBE5D;
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --shadow-card: 0 12px 32px -12px rgba(13, 43, 82, 0.08), 0 4px 12px -4px rgba(39, 132, 197, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--hmv-ice);
+      color: var(--hmv-navy);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Barra Superior Fixa com Progresso */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hmv-border);
+      padding: 12px 16px;
+    }
+
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .mini-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      user-select: none;
+    }
+
+    .mini-hmv {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #6AC4E8 0%, #2784C5 65%, #1A68A3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .mini-signature {
+      font-family: 'Great Vibes', 'Playfair Display', Georgia, cursive;
+      font-size: 1.55rem;
+      color: var(--hmv-navy);
+      line-height: 1;
+      margin-left: -4px;
+    }
+
+    .header-subtitle {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--hmv-blue);
+      border-left: 1px solid var(--hmv-border);
+      padding-left: 10px;
+      margin-left: 4px;
+    }
+
+    @media (max-width: 520px) {
+      .header-subtitle {
+        display: none;
+      }
+    }
+
+    .progress-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--hmv-navy);
+      background: var(--hmv-light);
+      border: 1px solid rgba(106, 196, 232, 0.45);
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background: var(--hmv-light);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--hmv-blue), var(--hmv-sky), var(--hmv-blue));
+      border-radius: 999px;
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Container Principal */
+    .container {
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 28px 16px 48px;
+      flex-grow: 1;
+    }
+
+    /* Cartões Base */
+    .card {
+      background: var(--hmv-card);
+      border: 1px solid var(--hmv-border);
+      border-radius: var(--radius-xl);
+      padding: 26px 24px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 22px;
+    }
+
+    @media (min-width: 640px) {
+      .card {
+        padding: 34px 36px;
+      }
+    }
+
+    /* Cabeçalho Institucional */
+    .hero-card {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(106, 196, 232, 0.12);
+      pointer-events: none;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -90px;
+      left: -80px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(39, 132, 197, 0.06);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 18px;
+      user-select: none;
+    }
+
+    .brand-words {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .brand-hmv {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.3rem, 6vw, 3.3rem);
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #6AC4E8 0%, #2784C5 65%, #1A68A3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-signature {
+      font-family: 'Great Vibes', 'Playfair Display', Georgia, cursive;
+      font-size: clamp(3rem, 7.5vw, 4.2rem);
+      color: var(--hmv-navy);
+      margin-left: -5px;
+      font-weight: 400;
+    }
+
+    .brand-divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      padding: 0 4px;
+    }
+
+    .divider-line {
+      height: 2px;
+      flex: 1;
+      background: linear-gradient(90deg, rgba(106, 196, 232, 0.45), var(--hmv-sky));
+      border-radius: 999px;
+    }
+
+    .divider-line.right {
+      background: linear-gradient(270deg, rgba(106, 196, 232, 0.45), var(--hmv-sky));
+    }
+
+    .divider-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--hmv-blue);
+      flex-shrink: 0;
+    }
+
+    .brand-tagline {
+      margin-top: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--hmv-navy);
+    }
+
+    .hero-separator {
+      width: 100%;
+      height: 1px;
+      background: var(--hmv-border);
+      margin: 14px 0 20px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--hmv-blue);
+      background: var(--hmv-light);
+      border: 1px solid rgba(106, 196, 232, 0.45);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.65rem, 4.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--hmv-navy);
+      letter-spacing: -0.01em;
+    }
+
+    /* Caixas Introdutórias (Descrição ANTES das Instruções) */
+    .intro-box-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--hmv-blue);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .description-text {
+      font-size: 0.95rem;
+      color: var(--hmv-navy);
+      line-height: 1.72;
+    }
+
+    .description-text p + p {
+      margin-top: 10px;
+    }
+
+    .instructions-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F7FBFE 100%);
+      border-left: 4px solid var(--hmv-blue);
+    }
+
+    .instructions-text {
+      font-size: 0.9rem;
+      color: var(--hmv-muted);
+      line-height: 1.65;
+    }
+
+    .instructions-text p + p {
+      margin-top: 6px;
+      color: var(--hmv-navy);
+      font-weight: 500;
+    }
+
+    .req-star {
+      color: var(--hmv-danger);
+      font-weight: 800;
+      margin: 0 2px;
+    }
+
+    /* Cabeçalho de Seção */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--hmv-light);
+    }
+
+    .section-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--hmv-blue), var(--hmv-sky));
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(39, 132, 197, 0.22);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--hmv-navy);
+    }
+
+    .section-desc {
+      font-size: 0.78rem;
+      color: var(--hmv-muted);
+    }
+
+    /* Blocos de Perguntas */
+    .question-block {
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid transparent;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .question-block + .question-block {
+      margin-top: 18px;
+    }
+
+    .question-block.has-error {
+      background-color: var(--hmv-danger-bg);
+      border-color: #FCA5A5;
+    }
+
+    .question-label {
+      display: block;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--hmv-navy);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .q-num {
+      color: var(--hmv-blue);
+      font-weight: 800;
+    }
+
+    .q-hint {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--hmv-muted);
+      margin-left: 4px;
+    }
+
+    .error-msg {
+      display: none;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--hmv-danger);
+      align-items: center;
+      gap: 5px;
+    }
+
+    .question-block.has-error .error-msg {
+      display: flex;
+    }
+
+    /* Inputs e Textareas */
+    .field-input,
+    .field-textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: var(--radius-md);
+      background: var(--hmv-ice);
+      border: 1.5px solid var(--hmv-border);
+      color: var(--hmv-navy);
+      font-family: inherit;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      transition: all 0.2s ease;
+    }
+
+    .field-input::placeholder,
+    .field-textarea::placeholder {
+      color: rgba(83, 107, 136, 0.6);
+    }
+
+    .field-input:focus,
+    .field-textarea:focus {
+      outline: none;
+      background: #FFFFFF;
+      border-color: var(--hmv-blue);
+      box-shadow: 0 0 0 4px rgba(39, 132, 197, 0.14);
+    }
+
+    .field-textarea {
+      resize: vertical;
+      min-height: 86px;
+    }
+
+    /* Botões de Opção (Radio & Checkbox Pills) */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 520px) {
+      .options-grid.cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .options-grid.cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .option-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: var(--radius-md);
+      background: var(--hmv-ice);
+      border: 1.5px solid var(--hmv-border);
+      color: var(--hmv-navy);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .option-pill:hover {
+      background: var(--hmv-light);
+      border-color: var(--hmv-sky);
+    }
+
+    .option-pill.selected {
+      background: linear-gradient(135deg, var(--hmv-navy) 0%, var(--hmv-deep) 60%, var(--hmv-blue) 100%);
+      border-color: var(--hmv-navy);
+      color: #FFFFFF;
+      box-shadow: 0 6px 16px -4px rgba(13, 43, 82, 0.25);
+    }
+
+    .pill-indicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #B5CEE2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+    }
+
+    .option-pill.checkbox-pill .pill-indicator {
+      border-radius: 6px;
+    }
+
+    .option-pill.selected .pill-indicator {
+      border-color: #FFFFFF;
+      background: var(--hmv-sky);
+    }
+
+    .pill-indicator svg {
+      width: 12px;
+      height: 12px;
+      color: var(--hmv-navy);
+      opacity: 0;
+      transform: scale(0.7);
+      transition: all 0.15s ease;
+    }
+
+    .option-pill.selected .pill-indicator svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Detalhamento Condicional Suave */
+    .conditional-detail {
+      display: none;
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: var(--hmv-light);
+      border: 1px solid rgba(106, 196, 232, 0.5);
+      animation: fadeSlide 0.25s ease forwards;
+    }
+
+    .conditional-detail.visible {
+      display: block;
+    }
+
+    .conditional-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--hmv-blue);
+      margin-bottom: 6px;
+    }
+
+    .conditional-detail .field-input {
+      background: #FFFFFF;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Barra de Ações Finais */
+    .actions-bar {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 560px) {
+      .actions-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: var(--radius-md);
+      background: transparent;
+      border: 1.5px solid var(--hmv-border);
+      color: var(--hmv-muted);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #FEE2E2;
+      border-color: #FCA5A5;
+      color: var(--hmv-danger);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 30px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--hmv-navy) 0%, var(--hmv-deep) 55%, var(--hmv-blue) 100%);
+      border: none;
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 24px -6px rgba(13, 43, 82, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px -6px rgba(13, 43, 82, 0.42);
+    }
+
+    /* Rodapé */
+    .footer {
+      border-top: 1px solid var(--hmv-border);
+      background: #FFFFFF;
+      padding: 20px 16px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--hmv-muted);
+    }
+
+    /* Modais */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(13, 43, 82, 0.65);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #FFFFFF;
+      border: 1px solid var(--hmv-border);
+      border-radius: var(--radius-xl);
+      max-width: 660px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(13, 43, 82, 0.35);
+      animation: fadeSlide 0.25s ease forwards;
+    }
+
+    .modal-box.small {
+      max-width: 430px;
+      padding: 26px;
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, var(--hmv-navy) 0%, var(--hmv-deep) 60%, var(--hmv-blue) 100%);
+      color: #FFFFFF;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .modal-header-sub {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--hmv-sky);
+      display: block;
+    }
+
+    .modal-header-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .modal-body {
+      padding: 20px 24px;
+      background: var(--hmv-ice);
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    .modal-info {
+      font-size: 0.85rem;
+      color: var(--hmv-navy);
+      background: var(--hmv-light);
+      border: 1px solid rgba(106, 196, 232, 0.45);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+
+    .summary-textarea {
+      width: 100%;
+      height: 290px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+      border: 1px solid var(--hmv-border);
+      color: var(--hmv-navy);
+      font-family: inherit;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      resize: none;
+    }
+
+    .summary-textarea:focus {
+      outline: none;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      background: #FFFFFF;
+      border-top: 1px solid var(--hmv-border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 580px) {
+      .modal-footer {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .modal-footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 580px) {
+      .modal-footer-right {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .btn-modal-edit {
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      background: var(--hmv-light);
+      border: none;
+      color: var(--hmv-navy);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-modal-copy {
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      background: var(--hmv-light);
+      border: 1px solid rgba(106, 196, 232, 0.6);
+      color: var(--hmv-navy);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-whatsapp {
+      padding: 12px 22px;
+      border-radius: var(--radius-md);
+      background: var(--hmv-whatsapp);
+      border: none;
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.28);
+      transition: background 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--hmv-whatsapp-hover);
+    }
+
+    /* Toast Flutuante */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 60;
+      background: var(--hmv-navy);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 999px;
+      box-shadow: 0 12px 28px rgba(13, 43, 82, 0.35);
+      display: none;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      display: flex;
+      animation: fadeSlide 0.2s ease forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Superior Fixa de Progresso -->
+  <header class="sticky-header">
+    <div class="header-inner">
+      <div class="header-top">
+        <div style="display: flex; align-items: baseline;">
+          <div class="mini-brand">
+            <span class="mini-hmv">HMV</span>
+            <span class="mini-signature">Signature</span>
+          </div>
+          <span class="header-subtitle">Check-in Nutricional</span>
+        </div>
+        <span id="progress-badge" class="progress-badge">0% (0 de 20)</span>
+      </div>
+      <div class="progress-track">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Cabeçalho Institucional HMV Signature -->
+    <section class="card hero-card">
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+      <div class="hero-content">
+        <div class="brand-lockup">
+          <div class="brand-words">
+            <span class="brand-hmv">HMV</span>
+            <span class="brand-signature">Signature</span>
+          </div>
+          <div class="brand-divider">
+            <span class="divider-line"></span>
+            <span class="divider-dot"></span>
+            <span class="divider-line right"></span>
+          </div>
+          <p class="brand-tagline">Atendimento Nutricional Personalizado</p>
+        </div>
+
+        <div class="hero-separator"></div>
+
+        <span class="hero-pill">✦ Questionário de Pré-Consulta</span>
+        <h1 class="hero-title">Check-in Nutricional</h1>
+      </div>
+    </section>
+
+    <!-- Caixa 1: Descrição / Boas-vindas (ANTES das Instruções) -->
+    <section class="card">
+      <div class="intro-box-title">
+        <span>✦</span> Descrição
+      </div>
+      <div class="description-text">
+        <p>Olá!</p>
+        <p>
+          Para que possamos desenhar uma estratégia perfeitamente alinhada ao seu estilo de vida e aos seus objetivos, convido-o(a) a preencher o nosso breve questionário de pré-consulta (Check-in Nutricional). Este instrumento inicial foi estruturado para colher seus dados de identificação e mapear, de forma precisa, suas práticas alimentares e demais rotinas. Dedicar alguns minutos a este preenchimento nos permitirá otimizar o seu atendimento, garantindo uma abordagem inteiramente personalizada, eficiente e focada no que realmente importa: a sua saúde e o seu bem-estar. E, desde já, agradecemos pelo seu tempo e respostas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Caixa 2: Instruções -->
+    <section class="card instructions-card">
+      <div class="intro-box-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        Instruções para preenchimento
+      </div>
+      <div class="instructions-text">
+        <p>Responda às perguntas abaixo. Em caso de dúvida, entre em contato.</p>
+        <p>É obrigatório responder às perguntas que possuem o símbolo <span class="req-star">*</span>.</p>
+      </div>
+    </section>
+
+    <!-- Formulário Principal -->
+    <form id="checkin-form" novalidate onsubmit="return false;">
+
+      <!-- SEÇÃO 1: Identificação e Objetivo -->
+      <section class="card">
+        <div class="section-header">
+          <span class="section-badge">1</span>
+          <div>
+            <h2 class="section-title">Identificação e Objetivo</h2>
+            <p class="section-desc">Dados iniciais e motivação para o acompanhamento</p>
+          </div>
+        </div>
+
+        <!-- 1 -->
+        <div class="question-block" id="block-q1">
+          <label for="q1" class="question-label">
+            <span class="q-num">1)</span><span class="req-star">*</span> Qual o seu nome completo?
+          </label>
+          <input type="text" id="q1" class="field-input" placeholder="Digite seu nome completo..." />
+          <div class="error-msg">⚠ Por favor, informe seu nome completo.</div>
+        </div>
+
+        <!-- 2 -->
+        <div class="question-block" id="block-q2">
+          <label for="q2" class="question-label">
+            <span class="q-num">2)</span><span class="req-star">*</span> Data de nascimento
+          </label>
+          <input type="date" id="q2" class="field-input" />
+          <div class="error-msg">⚠ Por favor, informe a sua data de nascimento.</div>
+        </div>
+
+        <!-- 3 -->
+        <div class="question-block" id="block-q3">
+          <span class="question-label">
+            <span class="q-num">3)</span><span class="req-star">*</span> Qual é o seu sexo biológico?
+          </span>
+          <div class="options-grid cols-3" id="q3-options">
+            <button type="button" class="option-pill" data-q="q3" data-val="Masculino" onclick="selectSingle('q3', 'Masculino')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Masculino</span>
+            </button>
+            <button type="button" class="option-pill" data-q="q3" data-val="Feminino" onclick="selectSingle('q3', 'Feminino')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Feminino</span>
+            </button>
+            <button type="button" class="option-pill" data-q="q3" data-val="Intersexo" onclick="selectSingle('q3', 'Intersexo')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Intersexo</span>
+            </button>
+          </div>
+          <div class="error-msg">⚠ Por favor, selecione uma opção.</div>
+        </div>
+
+        <!-- 4 -->
+        <div class="question-block" id="block-q4">
+          <label for="q4" class="question-label">
+            <span class="q-num">4)</span><span class="req-star">*</span> Qual é a sua profissão?
+          </label>
+          <input type="text" id="q4" class="field-input" placeholder="Digite sua ocupação ou profissão atual..." />
+          <div class="error-msg">⚠ Por favor, informe a sua profissão.</div>
+        </div>
+
+        <!-- 5 -->
+        <div class="question-block" id="block-q5">
+          <label for="q5" class="question-label">
+            <span class="q-num">5)</span><span class="req-star">*</span> O que te motivou a buscar o atendimento e cuidado nutricional?
+          </label>
+          <textarea id="q5" class="field-textarea" placeholder="Conte seus principais objetivos, expectativas ou queixas atuais..."></textarea>
+          <div class="error-msg">⚠ Por favor, compartilhe o que motivou sua busca pelo atendimento.</div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2: Hábitos e Preferências Alimentares -->
+      <section class="card">
+        <div class="section-header">
+          <span class="section-badge">2</span>
+          <div>
+            <h2 class="section-title">Hábitos e Preferências Alimentares</h2>
+            <p class="section-desc">Refeições diárias, horários, preferências e restrições</p>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="question-block" id="block-q6">
+          <span class="question-label">
+            <span class="q-num">6)</span><span class="req-star">*</span> Quais são as principais refeições que você realiza durante o dia? <span class="q-hint">(Seleção múltipla)</span>
+          </span>
+          <div class="options-grid cols-2" id="q6-options">
+            <button type="button" class="option-pill checkbox-pill" data-val="Desjejum (café da manhã)" onclick="toggleMulti('q6', 'Desjejum (café da manhã)')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Desjejum (café da manhã)</span>
+            </button>
+            <button type="button" class="option-pill checkbox-pill" data-val="Lanche da manhã" onclick="toggleMulti('q6', 'Lanche da manhã')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Lanche da manhã</span>
+            </button>
+            <button type="button" class="option-pill checkbox-pill" data-val="Almoço" onclick="toggleMulti('q6', 'Almoço')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Almoço</span>
+            </button>
+            <button type="button" class="option-pill checkbox-pill" data-val="Lanche da tarde" onclick="toggleMulti('q6', 'Lanche da tarde')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Lanche da tarde</span>
+            </button>
+            <button type="button" class="option-pill checkbox-pill" data-val="Jantar" onclick="toggleMulti('q6', 'Jantar')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Jantar</span>
+            </button>
+            <button type="button" class="option-pill checkbox-pill" data-val="Lanche da noite" onclick="toggleMulti('q6', 'Lanche da noite')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Lanche da noite</span>
+            </button>
+          </div>
+          <div class="error-msg">⚠ Selecione pelo menos uma refeição realizada durante o dia.</div>
+        </div>
+
+        <!-- 7 -->
+        <div class="question-block" id="block-q7">
+          <label for="q7" class="question-label">
+            <span class="q-num">7)</span><span class="req-star">*</span> E em quais horários você realiza estas refeições?
+          </label>
+          <textarea id="q7" class="field-textarea" placeholder="Ex: Café da manhã às 7h30, almoço às 12h30, lanche às 16h e jantar às 20h..."></textarea>
+          <div class="error-msg">⚠ Por favor, informe os horários habituais das refeições.</div>
+        </div>
+
+        <!-- 8 -->
+        <div class="question-block" id="block-q8">
+          <label for="q8" class="question-label">
+            <span class="q-num">8)</span><span class="req-star">*</span> Sabemos que há alimentos que mais gostamos e outros, não. Quais são as suas preferências e aversões alimentares?
+          </label>
+          <textarea id="q8" class="field-textarea" placeholder="Conte quais alimentos você ama incluir no dia a dia e quais não come de jeito nenhum..."></textarea>
+          <div class="error-msg">⚠ Por favor, informe suas preferências e aversões alimentares.</div>
+        </div>
+
+        <!-- 9 -->
+        <div class="question-block" id="block-q9">
+          <label for="q9" class="question-label">
+            <span class="q-num">9)</span><span class="req-star">*</span> Você tem alguma intolerância e/ou alergia alimentar? Se sim, a qual (quais) alimento(s)?
+          </label>
+          <textarea id="q9" class="field-textarea" placeholder="Ex: Não possuo / Ou: Intolerância à lactose, alergia a camarão..."></textarea>
+          <div class="error-msg">⚠ Por favor, responda se possui intolerância ou alergia alimentar.</div>
+        </div>
+
+        <!-- 10 -->
+        <div class="question-block" id="block-q10">
+          <label for="q10" class="question-label">
+            <span class="q-num">10)</span><span class="req-star">*</span> E quanto ao seu consumo de água? Qual o seu consumo médio (em litros), ao dia?
+          </label>
+          <input type="text" id="q10" class="field-input" placeholder="Ex: Cerca de 2 litros por dia" />
+          <div class="error-msg">⚠ Por favor, informe sua média diária de consumo de água.</div>
+        </div>
+
+        <!-- 11 -->
+        <div class="question-block" id="block-q11">
+          <label for="q11" class="question-label">
+            <span class="q-num">11)</span><span class="req-star">*</span> Você tem alguma dificuldade para mastigação de alimentos? Se sim, qual (is)?
+          </label>
+          <textarea id="q11" class="field-textarea" placeholder="Ex: Não tenho dificuldade / Ou: Desconforto com alimentos muito duros..."></textarea>
+          <div class="error-msg">⚠ Por favor, responda sobre dificuldade de mastigação.</div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 3: Histórico Clínico, Saúde e Exercícios -->
+      <section class="card">
+        <div class="section-header">
+          <span class="section-badge">3</span>
+          <div>
+            <h2 class="section-title">Saúde, Histórico e Atividade Física</h2>
+            <p class="section-desc">Funcionamento intestinal, histórico nutricional, treinos e uso contínuo</p>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="question-block" id="block-q12">
+          <label for="q12" class="question-label">
+            <span class="q-num">12)</span><span class="req-star">*</span> Quanto ao hábito intestinal. Qual é a sua frequência habitual de evacuação?
+          </label>
+          <textarea id="q12" class="field-textarea" placeholder="Ex: Todos os dias, 1 vez ao dia / Ou: A cada 2 ou 3 dias..."></textarea>
+          <div class="error-msg">⚠ Por favor, informe sua frequência habitual de evacuação.</div>
+        </div>
+
+        <!-- 13 -->
+        <div class="question-block" id="block-q13">
+          <label for="q13" class="question-label">
+            <span class="q-num">13)</span><span class="req-star">*</span> Você já teve oportunidade de seguir algum plano alimentar específico (para emagrecimento, ganho de peso, para alguma patologia específica) anteriormente. Se sim, qual (quais)?
+          </label>
+          <textarea id="q13" class="field-textarea" placeholder="Ex: Nunca segui um plano alimentar / Ou: Já fiz dieta para emagrecimento há 2 anos..."></textarea>
+          <div class="error-msg">⚠ Por favor, responda sobre experiências anteriores com planos alimentares.</div>
+        </div>
+
+        <!-- 14 -->
+        <div class="question-block" id="block-q14">
+          <span class="question-label">
+            <span class="q-num">14)</span><span class="req-star">*</span> Você segue uma rotina de exercícios?
+          </span>
+          <div class="options-grid cols-2" id="q14-options">
+            <button type="button" class="option-pill" data-q="q14" data-val="Sim" onclick="selectSingle('q14', 'Sim')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Sim</span>
+            </button>
+            <button type="button" class="option-pill" data-q="q14" data-val="Não" onclick="selectSingle('q14', 'Não')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Não</span>
+            </button>
+          </div>
+          <div id="q14-detail-wrap" class="conditional-detail">
+            <label for="q14-detail" class="conditional-label">Se desejar, especifique qual modalidade e frequência:</label>
+            <input type="text" id="q14-detail" class="field-input" placeholder="Ex: Musculação 4x por semana e corrida 2x..." />
+          </div>
+          <div class="error-msg">⚠ Por favor, selecione Sim ou Não.</div>
+        </div>
+
+        <!-- 15 -->
+        <div class="question-block" id="block-q15">
+          <span class="question-label">
+            <span class="q-num">15)</span><span class="req-star">*</span> Você usa medicamentos e/ou suplementos de forma contínua?
+          </span>
+          <div class="options-grid cols-2" id="q15-options">
+            <button type="button" class="option-pill" data-q="q15" data-val="Sim" onclick="selectSingle('q15', 'Sim')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Sim</span>
+            </button>
+            <button type="button" class="option-pill" data-q="q15" data-val="Não" onclick="selectSingle('q15', 'Não')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Não</span>
+            </button>
+          </div>
+          <div id="q15-detail-wrap" class="conditional-detail">
+            <label for="q15-detail" class="conditional-label">Se desejar, especifique quais medicamentos/suplementos:</label>
+            <input type="text" id="q15-detail" class="field-input" placeholder="Ex: Vitamina D, Whey Protein, anticoncepcional..." />
+          </div>
+          <div class="error-msg">⚠ Por favor, selecione Sim ou Não.</div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4: Rotina Domiciliar e Estilo de Vida -->
+      <section class="card">
+        <div class="section-header">
+          <span class="section-badge">4</span>
+          <div>
+            <h2 class="section-title">Rotina Domiciliar e Estilo de Vida</h2>
+            <p class="section-desc">Organização das refeições, sono e hábitos sociais</p>
+          </div>
+        </div>
+
+        <!-- 16 -->
+        <div class="question-block" id="block-q16">
+          <label for="q16" class="question-label">
+            <span class="q-num">16)</span><span class="req-star">*</span> Quanto a rotina domiciliar. Quem é o responsável pela preparação das refeições?
+          </label>
+          <textarea id="q16" class="field-textarea" placeholder="Ex: Eu mesmo(a) preparo / Minha mãe / Funcionária da casa..."></textarea>
+          <div class="error-msg">⚠ Por favor, informe quem prepara as refeições.</div>
+        </div>
+
+        <!-- 17 -->
+        <div class="question-block" id="block-q17">
+          <label for="q17" class="question-label">
+            <span class="q-num">17)</span><span class="req-star">*</span> Quem é o responsável pela compra de suprimentos?
+          </label>
+          <textarea id="q17" class="field-textarea" placeholder="Ex: Eu faço as compras semanalmente / Meu cônjuge..."></textarea>
+          <div class="error-msg">⚠ Por favor, informe quem realiza as compras.</div>
+        </div>
+
+        <!-- 18 -->
+        <div class="question-block" id="block-q18">
+          <label for="q18" class="question-label">
+            <span class="q-num">18)</span><span class="req-star">*</span> Já iremos finalizar... Qual a sua rotina de sono? Que horas você habitualmente acorda e que horas habitualmente você dorme?
+          </label>
+          <textarea id="q18" class="field-textarea" placeholder="Ex: Durmo por volta das 23h e acordo às 6h30..."></textarea>
+          <div class="error-msg">⚠ Por favor, informe seus horários habituais de sono.</div>
+        </div>
+
+        <!-- 19 -->
+        <div class="question-block" id="block-q19">
+          <span class="question-label">
+            <span class="q-num">19)</span><span class="req-star">*</span> Você consome bebidas alcoólicas?
+          </span>
+          <div class="options-grid cols-2" id="q19-options">
+            <button type="button" class="option-pill" data-q="q19" data-val="Sim" onclick="selectSingle('q19', 'Sim')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Sim</span>
+            </button>
+            <button type="button" class="option-pill" data-q="q19" data-val="Não" onclick="selectSingle('q19', 'Não')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Não</span>
+            </button>
+          </div>
+          <div id="q19-detail-wrap" class="conditional-detail">
+            <label for="q19-detail" class="conditional-label">Se desejar, especifique tipo e frequência:</label>
+            <input type="text" id="q19-detail" class="field-input" placeholder="Ex: Vinho ou cerveja aos finais de semana..." />
+          </div>
+          <div class="error-msg">⚠ Por favor, selecione Sim ou Não.</div>
+        </div>
+
+        <!-- 20 -->
+        <div class="question-block" id="block-q20">
+          <span class="question-label">
+            <span class="q-num">20)</span><span class="req-star">*</span> Você é fumante?
+          </span>
+          <div class="options-grid cols-2" id="q20-options">
+            <button type="button" class="option-pill" data-q="q20" data-val="Sim" onclick="selectSingle('q20', 'Sim')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Sim</span>
+            </button>
+            <button type="button" class="option-pill" data-q="q20" data-val="Não" onclick="selectSingle('q20', 'Não')">
+              <span class="pill-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Não</span>
+            </button>
+          </div>
+          <div id="q20-detail-wrap" class="conditional-detail">
+            <label for="q20-detail" class="conditional-label">Se desejar, especifique frequência/quantidade:</label>
+            <input type="text" id="q20-detail" class="field-input" placeholder="Ex: Ocasionalmente / Quantidade diária..." />
+          </div>
+          <div class="error-msg">⚠ Por favor, selecione Sim ou Não.</div>
+        </div>
+      </section>
+
+      <!-- Barra de Botões Finais -->
+      <div class="actions-bar">
+        <button type="button" class="btn-secondary" onclick="openClearModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Limpar respostas
+        </button>
+
+        <button type="button" class="btn-primary" onclick="validateAndGenerate()">
+          <span>Finalizar e Gerar Resumo</span>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <strong>HMV Signature</strong> • Atendimento Nutricional Personalizado • Check-in Nutricional
+  </footer>
+
+  <!-- Modal de Confirmação para Limpar -->
+  <div id="clear-modal" class="modal-backdrop">
+    <div class="modal-box small">
+      <h3 class="section-title" style="margin-bottom: 8px;">Limpar todas as respostas?</h3>
+      <p style="font-size: 0.88rem; color: var(--hmv-muted); margin-bottom: 20px;">
+        Tem certeza que deseja apagar tudo o que foi preenchido neste questionário?
+      </p>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="button" class="btn-modal-edit" onclick="closeClearModal()">Cancelar</button>
+        <button type="button" class="btn-secondary" style="background: var(--hmv-danger); color: #fff; border-color: var(--hmv-danger);" onclick="confirmClear()">Sim, limpar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Resumo Formatado e Envio -->
+  <div id="summary-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <span class="modal-header-sub">HMV Signature • Atendimento Nutricional Personalizado</span>
+          <h3 class="modal-header-title">Resumo — Check-in Nutricional</h3>
+        </div>
+        <button type="button" class="modal-close" aria-label="Fechar" onclick="closeSummaryModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-info">
+          Tudo pronto! Toque em <strong>Enviar pelo WhatsApp</strong> ou em <strong>Copiar Resumo</strong> para compartilhar suas respostas com a equipe <strong>HMV Signature</strong>.
+        </div>
+        <textarea id="summary-output" class="summary-textarea" readonly></textarea>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-edit" onclick="closeSummaryModal()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Editar Respostas
+        </button>
+
+        <div class="modal-footer-right">
+          <button type="button" class="btn-modal-copy" onclick="copySummary()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="copy-label">Copiar Resumo</span>
+          </button>
+
+          <button type="button" class="btn-whatsapp" onclick="sendWhatsApp()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/></svg>
+            Enviar pelo WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notificação Toast -->
+  <div id="toast" class="toast">
+    <span style="color: var(--hmv-sky);">✓</span>
+    <span id="toast-msg">Resumo copiado!</span>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'hmv_signature_checkin_nutricional_v1';
+    const memoryStorage = {};
+
+    // Armazenamento seguro com fallback em memória para ambientes sandbox
+    function safeSetItem(key, val) {
+      memoryStorage[key] = val;
+      try {
+        window.localStorage.setItem(key, val);
+      } catch (e) {}
+    }
+
+    function safeGetItem(key) {
+      try {
+        const stored = window.localStorage.getItem(key);
+        if (stored !== null) return stored;
+      } catch (e) {}
+      return memoryStorage[key] || null;
+    }
+
+    function safeRemoveItem(key) {
+      delete memoryStorage[key];
+      try {
+        window.localStorage.removeItem(key);
+      } catch (e) {}
+    }
+
+    const state = {
+      q1: '',
+      q2: '',
+      q3: '',
+      q4: '',
+      q5: '',
+      q6: [],
+      q7: '',
+      q8: '',
+      q9: '',
+      q10: '',
+      q11: '',
+      q12: '',
+      q13: '',
+      q14: '',
+      q14Detail: '',
+      q15: '',
+      q15Detail: '',
+      q16: '',
+      q17: '',
+      q18: '',
+      q19: '',
+      q19Detail: '',
+      q20: '',
+      q20Detail: ''
+    };
+
+    const textQuestions = ['q1', 'q2', 'q4', 'q5', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q16', 'q17', 'q18'];
+    const singleChoiceQuestions = ['q3', 'q14', 'q15', 'q19', 'q20'];
+    const conditionalQuestions = ['q14', 'q15', 'q19', 'q20'];
+
+    function saveState() {
+      safeSetItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function clearFieldError(qKey) {
+      const block = document.getElementById('block-' + qKey);
+      if (block) block.classList.remove('has-error');
+    }
+
+    function selectSingle(qKey, value) {
+      state[qKey] = value;
+      clearFieldError(qKey);
+      updateSingleUI(qKey);
+      saveState();
+      updateProgress();
+
+      if (conditionalQuestions.includes(qKey) && value === 'Sim') {
+        const detailInput = document.getElementById(qKey + '-detail');
+        if (detailInput) {
+          setTimeout(() => detailInput.focus(), 100);
+        }
+      }
+    }
+
+    function updateSingleUI(qKey) {
+      const buttons = document.querySelectorAll(`#${qKey}-options .option-pill`);
+      buttons.forEach(btn => {
+        if (btn.dataset.val === state[qKey]) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.remove('selected');
+        }
+      });
+
+      if (conditionalQuestions.includes(qKey)) {
+        const wrap = document.getElementById(qKey + '-detail-wrap');
+        if (wrap) {
+          if (state[qKey] === 'Sim') {
+            wrap.classList.add('visible');
+          } else {
+            wrap.classList.remove('visible');
+          }
+        }
+      }
+    }
+
+    function toggleMulti(qKey, value) {
+      const idx = state[qKey].indexOf(value);
+      if (idx === -1) {
+        state[qKey].push(value);
+      } else {
+        state[qKey].splice(idx, 1);
+      }
+      clearFieldError(qKey);
+      updateMultiUI(qKey);
+      saveState();
+      updateProgress();
+    }
+
+    function updateMultiUI(qKey) {
+      const buttons = document.querySelectorAll(`#${qKey}-options .option-pill`);
+      buttons.forEach(btn => {
+        if (state[qKey].includes(btn.dataset.val)) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.remove('selected');
+        }
+      });
+    }
+
+    function isAnswered(qKey) {
+      if (qKey === 'q6') {
+        return Array.isArray(state.q6) && state.q6.length > 0;
+      }
+      return typeof state[qKey] === 'string' && state[qKey].trim().length > 0;
+    }
+
+    function updateProgress() {
+      let count = 0;
+      for (let i = 1; i <= 20; i++) {
+        if (isAnswered('q' + i)) count++;
+      }
+      const pct = Math.round((count / 20) * 100);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-badge').textContent = `${pct}% (${count} de 20)`;
+    }
+
+    function loadState() {
+      const raw = safeGetItem(STORAGE_KEY);
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          Object.assign(state, parsed);
+          if (!Array.isArray(state.q6)) state.q6 = [];
+        } catch (e) {}
+      }
+
+      textQuestions.forEach(k => {
+        const el = document.getElementById(k);
+        if (el) el.value = state[k] || '';
+      });
+
+      singleChoiceQuestions.forEach(k => updateSingleUI(k));
+      updateMultiUI('q6');
+
+      conditionalQuestions.forEach(k => {
+        const detailEl = document.getElementById(k + '-detail');
+        if (detailEl) detailEl.value = state[k + 'Detail'] || '';
+      });
+
+      updateProgress();
+    }
+
+    function bindEvents() {
+      textQuestions.forEach(k => {
+        const el = document.getElementById(k);
+        if (el) {
+          el.addEventListener('input', (e) => {
+            state[k] = e.target.value;
+            if (state[k].trim().length > 0) clearFieldError(k);
+            saveState();
+            updateProgress();
+          });
+        }
+      });
+
+      conditionalQuestions.forEach(k => {
+        const detailEl = document.getElementById(k + '-detail');
+        if (detailEl) {
+          detailEl.addEventListener('input', (e) => {
+            state[k + 'Detail'] = e.target.value;
+            saveState();
+          });
+        }
+      });
+    }
+
+    function formatYesNoWithDetail(choice, detail) {
+      if (choice === 'Sim' && detail && detail.trim().length > 0) {
+        return `Sim (${detail.trim()})`;
+      }
+      return choice;
+    }
+
+    function formatBirthDateWithAge(isoDate) {
+      if (!isoDate) return '';
+      const parts = isoDate.split('-');
+      if (parts.length !== 3) return isoDate;
+      const year = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10);
+      const day = parseInt(parts[2], 10);
+      const formatted = `${parts[2]}/${parts[1]}/${parts[0]}`;
+
+      const birth = new Date(year, month - 1, day);
+      const now = new Date();
+      if (!isNaN(birth.getTime()) && birth <= now) {
+        let age = now.getFullYear() - birth.getFullYear();
+        const m = now.getMonth() - birth.getMonth();
+        if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) {
+          age--;
+        }
+        if (age >= 0 && age <= 130) {
+          return `${formatted} (${age} ${age === 1 ? 'ano' : 'anos'})`;
+        }
+      }
+      return formatted;
+    }
+
+    function validateAndGenerate() {
+      let firstMissing = null;
+      let missingCount = 0;
+
+      for (let i = 1; i <= 20; i++) {
+        const qKey = 'q' + i;
+        const block = document.getElementById('block-' + qKey);
+        if (!isAnswered(qKey)) {
+          missingCount++;
+          if (block) block.classList.add('has-error');
+          if (!firstMissing) firstMissing = block;
+        } else {
+          if (block) block.classList.remove('has-error');
+        }
+      }
+
+      if (firstMissing) {
+        firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        showToast(`Preencha ${missingCount === 1 ? 'a pergunta obrigatória pendente' : `as ${missingCount} perguntas obrigatórias pendentes`}.`);
+        return;
+      }
+
+      const today = new Date();
+      const dateStr = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`;
+
+      const lines = [
+        `✦ *HMV Signature — Check-in Nutricional*`,
+        `_Atendimento Nutricional Personalizado_`,
+        `📅 *Data:* ${dateStr}`,
+        `━━━━━━━━━━━━━━━━━━━━`,
+        `*1) Nome completo:* ${state.q1.trim()}`,
+        `*2) Data de nascimento:* ${formatBirthDateWithAge(state.q2.trim())}`,
+        `*3) Sexo biológico:* ${state.q3}`,
+        `*4) Profissão:* ${state.q4.trim()}`,
+        `*5) Motivação para o atendimento nutricional:* ${state.q5.trim()}`,
+        ``,
+        `*6) Principais refeições realizadas:* ${state.q6.join(', ')}`,
+        `*7) Horários das refeições:* ${state.q7.trim()}`,
+        `*8) Preferências e aversões alimentares:* ${state.q8.trim()}`,
+        `*9) Intolerância e/ou alergia alimentar:* ${state.q9.trim()}`,
+        `*10) Consumo médio diário de água:* ${state.q10.trim()}`,
+        `*11) Dificuldade para mastigação:* ${state.q11.trim()}`,
+        ``,
+        `*12) Hábito intestinal (frequência):* ${state.q12.trim()}`,
+        `*13) Experiência anterior com plano alimentar:* ${state.q13.trim()}`,
+        `*14) Rotina de exercícios:* ${formatYesNoWithDetail(state.q14, state.q14Detail)}`,
+        `*15) Medicamentos e/ou suplementos contínuos:* ${formatYesNoWithDetail(state.q15, state.q15Detail)}`,
+        ``,
+        `*16) Responsável pela preparação das refeições:* ${state.q16.trim()}`,
+        `*17) Responsável pela compra de suprimentos:* ${state.q17.trim()}`,
+        `*18) Rotina de sono (acordar e dormir):* ${state.q18.trim()}`,
+        `*19) Consome bebidas alcoólicas:* ${formatYesNoWithDetail(state.q19, state.q19Detail)}`,
+        `*20) Fumante:* ${formatYesNoWithDetail(state.q20, state.q20Detail)}`
+      ];
+
+      document.getElementById('summary-output').value = lines.join('\n');
+      document.getElementById('summary-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSummaryModal() {
+      document.getElementById('summary-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function copySummary() {
+      const textarea = document.getElementById('summary-output');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      let copied = false;
+      try {
+        copied = document.execCommand('copy');
+      } catch (e) {}
+
+      if (copied) {
+        const label = document.getElementById('copy-label');
+        label.textContent = 'Copiado!';
+        showToast('Resumo copiado com sucesso!');
+        setTimeout(() => {
+          label.textContent = 'Copiar Resumo';
+        }, 2500);
+      }
+    }
+
+    function sendWhatsApp() {
+      const text = document.getElementById('summary-output').value;
+      const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    function openClearModal() {
+      document.getElementById('clear-modal').classList.add('open');
+    }
+
+    function closeClearModal() {
+      document.getElementById('clear-modal').classList.remove('open');
+    }
+
+    function confirmClear() {
+      safeRemoveItem(STORAGE_KEY);
+      textQuestions.forEach(k => state[k] = '');
+      singleChoiceQuestions.forEach(k => state[k] = '');
+      conditionalQuestions.forEach(k => state[k + 'Detail'] = '');
+      state.q6 = [];
+
+      for (let i = 1; i <= 20; i++) {
+        clearFieldError('q' + i);
+      }
+
+      loadState();
+      closeClearModal();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast('Formulário limpo com sucesso.');
+    }
+
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = message;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    loadState();
+    bindEvents();
+  </script>
+</body>
+</html>
