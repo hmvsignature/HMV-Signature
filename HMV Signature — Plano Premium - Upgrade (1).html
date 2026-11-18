@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Premium - Upgrade | HMV Signature</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        brand: ['Montserrat', 'sans-serif'],
+                        signature: ['"Great Vibes"', '"Playfair Display"', 'Georgia', 'cursive'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        hmv: {
+                            navy: '#0D2B52',
+                            deep: '#153E75',
+                            blue: '#2784C5',
+                            sky: '#6AC4E8',
+                            light: '#EBF6FC',
+                            ice: '#F5FAFD',
+                            border: '#D7E7F3',
+                            muted: '#536B88'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #F5FAFD;
+            color: #0D2B52;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .hmv-gradient-text {
+            background: linear-gradient(135deg, #6AC4E8 0%, #2784C5 65%, #1A68A3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-elevated {
+            box-shadow: 0 12px 32px -12px rgba(13, 43, 82, 0.08), 0 4px 12px -4px rgba(39, 132, 197, 0.05);
+        }
+        .fade-slide-in {
+            animation: fadeSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #EBF6FC;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B8D8EE;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6AC4E8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-hmv-sky/30 selection:text-hmv-navy">
+
+    <!-- Barra Superior Fixa com Progresso -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-hmv-border transition-all">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-3">
+            <div class="flex items-center justify-between gap-3 mb-2">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="flex items-baseline shrink-0 select-none">
+                        <span class="font-brand font-extrabold text-lg sm:text-xl tracking-tight hmv-gradient-text">HMV</span>
+                        <span class="font-signature text-2xl sm:text-[1.7rem] text-hmv-navy -ml-0.5 leading-none">Signature</span>
+                    </div>
+                    <span class="hidden sm:inline-block h-4 w-px bg-hmv-border"></span>
+                    <span class="hidden sm:inline-block text-xs font-bold uppercase tracking-wider text-hmv-blue truncate">
+                        Plano Premium - Upgrade
+                    </span>
+                </div>
+                <div class="shrink-0">
+                    <span id="progress-text" class="text-xs font-bold text-hmv-navy bg-hmv-light border border-hmv-sky/40 px-3 py-1 rounded-full">
+                        0 de 21 respondidas
+                    </span>
+                </div>
+            </div>
+            <!-- Barra de Progresso -->
+            <div class="w-full h-2 bg-hmv-light rounded-full overflow-hidden">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-hmv-blue via-hmv-sky to-hmv-blue rounded-full transition-all duration-300 ease-out" style="width: 0%;"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-7 sm:py-10">
+
+        <!-- Cabeçalho Institucional HMV Signature -->
+        <section class="bg-white rounded-3xl p-6 sm:p-10 border border-hmv-border card-elevated mb-8 text-center relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-56 h-56 rounded-full bg-hmv-sky/10 pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-20 w-56 h-56 rounded-full bg-hmv-blue/5 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col items-center">
+                <!-- Logomarca Estilizada HMV Signature -->
+                <div class="inline-flex flex-col items-center mb-5 select-none">
+                    <div class="flex items-baseline justify-center leading-none">
+                        <span class="font-brand font-extrabold text-4xl sm:text-5xl md:text-[3.4rem] tracking-tight hmv-gradient-text">HMV</span>
+                        <span class="font-signature text-5xl sm:text-6xl md:text-[4.2rem] text-hmv-navy -ml-1 sm:-ml-1.5 font-normal">Signature</span>
+                    </div>
+                    <!-- Linha Divisória Azul Celeste com Ponto Central -->
+                    <div class="w-full flex items-center gap-2 mt-1.5 px-1">
+                        <div class="h-[2px] flex-1 bg-gradient-to-r from-hmv-sky/60 to-hmv-sky rounded-full"></div>
+                        <span class="w-1.5 h-1.5 rounded-full bg-hmv-blue shrink-0"></span>
+                        <div class="h-[2px] flex-1 bg-gradient-to-l from-hmv-sky/60 to-hmv-sky rounded-full"></div>
+                    </div>
+                    <p class="mt-2 text-xs sm:text-sm font-semibold tracking-wide text-hmv-navy">
+                        Atendimento Nutricional Personalizado
+                    </p>
+                </div>
+
+                <div class="w-full h-px bg-hmv-border/80 my-4"></div>
+
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-hmv-blue bg-hmv-light border border-hmv-sky/40 px-3.5 py-1.5 rounded-full mb-3">
+                    <span>✦</span> Plano Premium - Upgrade
+                </span>
+
+                <h1 class="font-serif text-2xl sm:text-3xl font-bold text-hmv-navy tracking-tight mb-2.5">
+                    Check-in de Acompanhamento
+                </h1>
+                <p class="text-hmv-muted text-sm sm:text-base leading-relaxed max-w-xl">
+                    Mudança de Hábitos e Ganho de Massa Magra • Compartilhe sua rotina, percepções e sinais do corpo para refinarmos cada detalhe da sua estratégia alimentar.
+                </p>
+            </div>
+        </section>
+
+        <!-- Card Inicial: Identificação do Paciente -->
+        <section class="bg-white rounded-3xl p-6 sm:p-7 border border-hmv-border card-elevated mb-7">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <h2 class="text-base font-bold text-hmv-navy flex items-center gap-2.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-hmv-blue to-hmv-sky"></span>
+                    Identificação do Paciente
+                </h2>
+                <span id="autosave-status" class="text-xs font-medium text-hmv-blue flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Rascunho salvo automaticamente
+                </span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="sm:col-span-2">
+                    <label for="patient-name" class="block text-xs font-bold uppercase tracking-wider text-hmv-navy mb-1.5">
+                        Nome do Paciente
+                    </label>
+                    <input type="text" id="patient-name" placeholder="Digite o nome completo..."
+                        class="w-full px-4 py-3 rounded-2xl bg-hmv-ice border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm">
+                </div>
+                <div>
+                    <label for="checkin-date" class="block text-xs font-bold uppercase tracking-wider text-hmv-navy mb-1.5">
+                        Data do Check-in
+                    </label>
+                    <input type="date" id="checkin-date"
+                        class="w-full px-4 py-3 rounded-2xl bg-hmv-ice border border-hmv-border text-hmv-navy focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm">
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegação Rápida por Seções -->
+        <nav aria-label="Seções do formulário" class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar">
+            <a href="#secao-1" class="shrink-0 px-4 py-2 rounded-full text-xs font-bold bg-white border border-hmv-border text-hmv-navy hover:bg-hmv-light hover:border-hmv-blue hover:text-hmv-blue transition-all shadow-sm">1. Adesão ao plano</a>
+            <a href="#secao-2" class="shrink-0 px-4 py-2 rounded-full text-xs font-bold bg-white border border-hmv-border text-hmv-navy hover:bg-hmv-light hover:border-hmv-blue hover:text-hmv-blue transition-all shadow-sm">2. Rotina</a>
+            <a href="#secao-3" class="shrink-0 px-4 py-2 rounded-full text-xs font-bold bg-white border border-hmv-border text-hmv-navy hover:bg-hmv-light hover:border-hmv-blue hover:text-hmv-blue transition-all shadow-sm">3. Apetite e comportamento</a>
+            <a href="#secao-4" class="shrink-0 px-4 py-2 rounded-full text-xs font-bold bg-white border border-hmv-border text-hmv-navy hover:bg-hmv-light hover:border-hmv-blue hover:text-hmv-blue transition-all shadow-sm">4. Nutrição</a>
+            <a href="#secao-5" class="shrink-0 px-4 py-2 rounded-full text-xs font-bold bg-white border border-hmv-border text-hmv-navy hover:bg-hmv-light hover:border-hmv-blue hover:text-hmv-blue transition-all shadow-sm">5. Percepção Corporal</a>
+            <a href="#secao-6" class="shrink-0 px-4 py-2 rounded-full text-xs font-bold bg-white border border-hmv-border text-hmv-navy hover:bg-hmv-light hover:border-hmv-blue hover:text-hmv-blue transition-all shadow-sm">6. Sinais do corpo</a>
+        </nav>
+
+        <!-- Formulário Principal -->
+        <form id="checkin-form" class="space-y-8" onsubmit="return false;">
+
+            <!-- SEÇÃO 1: Adesão ao plano -->
+            <section id="secao-1" class="scroll-mt-24 bg-white rounded-3xl p-6 sm:p-8 border border-hmv-border card-elevated">
+                <div class="flex items-center gap-3.5 pb-5 mb-6 border-b border-hmv-light">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-hmv-blue to-hmv-sky text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-sm">1</span>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-hmv-navy">1. Adesão ao plano</h3>
+                        <p class="text-xs text-hmv-muted">Como foi sua adaptação alimentar neste período</p>
+                    </div>
+                </div>
+
+                <div class="space-y-7">
+                    <!-- Pergunta 1 -->
+                    <div>
+                        <label class="block text-sm sm:text-base font-semibold text-hmv-navy mb-3">
+                            <span class="text-hmv-blue font-extrabold mr-1">1.</span> De 0 a 10, quanto você conseguiu seguir o plano neste período?
+                        </label>
+                        <div class="bg-hmv-ice p-4 rounded-2xl border border-hmv-border">
+                            <div class="grid grid-cols-6 sm:grid-cols-11 gap-2" id="q1-scale-container"></div>
+                            <div class="flex flex-wrap justify-between items-center gap-2 mt-3 text-xs text-hmv-muted font-semibold px-1">
+                                <span>0 — Muito difícil</span>
+                                <span id="q1-feedback" class="text-hmv-blue font-bold"></span>
+                                <span>10 — Segui perfeitamente</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 2 -->
+                    <div>
+                        <label for="q2" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">2.</span> Quais refeições você pulou ou trocou? Por quê?
+                        </label>
+                        <textarea id="q2" rows="3" placeholder="Ex: Troquei o lanche da tarde duas vezes por falta de tempo no trabalho..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 3 -->
+                    <div>
+                        <label for="q3" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">3.</span> Algum alimento ou preparação você não aceitou? Qual?
+                        </label>
+                        <textarea id="q3" rows="2" placeholder="Conte se enjoou de algum item ou teve dificuldade com o preparo..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 4 -->
+                    <div>
+                        <label for="q4" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">4.</span> O que foi mais fácil e o que foi mais difícil de seguir?
+                        </label>
+                        <textarea id="q4" rows="3" placeholder="Ex: O café da manhã foi super prático; o jantar foi mais desafiador..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 2: Rotina -->
+            <section id="secao-2" class="scroll-mt-24 bg-white rounded-3xl p-6 sm:p-8 border border-hmv-border card-elevated">
+                <div class="flex items-center gap-3.5 pb-5 mb-6 border-b border-hmv-light">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-hmv-blue to-hmv-sky text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-sm">2</span>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-hmv-navy">2. Rotina</h3>
+                        <p class="text-xs text-hmv-muted">Hidratação, funcionamento intestinal, sono e treinos</p>
+                    </div>
+                </div>
+
+                <div class="space-y-7">
+                    <!-- Pergunta 5 -->
+                    <div>
+                        <label for="q5" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">5.</span> Água: média diária em litros.
+                        </label>
+                        <div class="flex flex-wrap items-center gap-2 mb-2.5" id="water-chips">
+                            <button type="button" data-val="Menos de 1,5L" class="water-chip px-3.5 py-1.5 rounded-full text-xs font-bold bg-hmv-light border border-hmv-sky/40 text-hmv-navy hover:bg-hmv-blue hover:text-white transition-all">Menos de 1,5L</button>
+                            <button type="button" data-val="1,5L a 2L" class="water-chip px-3.5 py-1.5 rounded-full text-xs font-bold bg-hmv-light border border-hmv-sky/40 text-hmv-navy hover:bg-hmv-blue hover:text-white transition-all">1,5L a 2L</button>
+                            <button type="button" data-val="2L a 2,5L" class="water-chip px-3.5 py-1.5 rounded-full text-xs font-bold bg-hmv-light border border-hmv-sky/40 text-hmv-navy hover:bg-hmv-blue hover:text-white transition-all">2L a 2,5L</button>
+                            <button type="button" data-val="Mais de 2,5L" class="water-chip px-3.5 py-1.5 rounded-full text-xs font-bold bg-hmv-light border border-hmv-sky/40 text-hmv-navy hover:bg-hmv-blue hover:text-white transition-all">Mais de 2,5L</button>
+                        </div>
+                        <input type="text" id="q5" placeholder="Ex: 2L a 2,5L"
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm">
+                    </div>
+
+                    <!-- Pergunta 6 -->
+                    <div>
+                        <label for="q6" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">6.</span> Intestinal: frequência de evacuação e se houve mudança. Há presença de estufamento, gases ou desconforto abdominal?
+                        </label>
+                        <textarea id="q6" rows="3" placeholder="Ex: Todos os dias pela manhã, sem desconfortos / Ou: notei mais gases à noite..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 7 -->
+                    <div>
+                        <label for="q7" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">7.</span> Sono: horários de dormir e acordar e qualidade.
+                        </label>
+                        <textarea id="q7" rows="2" placeholder="Ex: Durmo por volta das 23h e acordo às 6h30, sono reparador..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 8 -->
+                    <div>
+                        <label for="q8" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">8.</span> Álcool: bebida, frequência e quantidade.
+                        </label>
+                        <textarea id="q8" rows="2" placeholder="Ex: Não consumi / Ou: 2 taças de vinho no sábado..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 9 -->
+                    <div>
+                        <label for="q9" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">9.</span> Exercícios: modalidade, frequência e intensidade. Conseguiu aumentar carga ou repetições? Em quais exercícios? Sentiu queda de energia/desempenho durante o treino ou boa recuperação entre as sessões?
+                        </label>
+                        <textarea id="q9" rows="4" placeholder="Detalhe seus treinos, evolução de cargas ou repetições, disposição durante o treino e recuperação muscular..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 3: Apetite e comportamento -->
+            <section id="secao-3" class="scroll-mt-24 bg-white rounded-3xl p-6 sm:p-8 border border-hmv-border card-elevated">
+                <div class="flex items-center gap-3.5 pb-5 mb-6 border-b border-hmv-light">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-hmv-blue to-hmv-sky text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-sm">3</span>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-hmv-navy">3. Apetite e comportamento</h3>
+                        <p class="text-xs text-hmv-muted">Sinais de fome, saciedade e relação emocional com a alimentação</p>
+                    </div>
+                </div>
+
+                <div class="space-y-7">
+                    <!-- Pergunta 10 -->
+                    <div>
+                        <label for="q10" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">10.</span> Fome e saciedade: como estiveram ao longo do dia? Em quais horários a fome foi mais forte ou mais fraca?
+                        </label>
+                        <textarea id="q10" rows="3" placeholder="Ex: Senti mais fome no final da tarde, antes do treino..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 11 -->
+                    <div>
+                        <label for="q11" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">11.</span> Teve dificuldade para comer o volume do plano? Em quais refeições?
+                        </label>
+                        <textarea id="q11" rows="2" placeholder="Conte se alguma refeição pareceu muito volumosa..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 12 -->
+                    <div>
+                        <label for="q12" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">12.</span> Comeu por ansiedade, estresse, tédio ou tristeza? Em quais situações?
+                        </label>
+                        <textarea id="q12" rows="3" placeholder="Se aconteceu, descreva o momento e o que sentiu..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 13 -->
+                    <div>
+                        <label for="q13" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">13.</span> Finais de semana e refeições fora de casa: conseguiu seguir o plano? Quantas vezes comeu fora e como escolheu?
+                        </label>
+                        <textarea id="q13" rows="3" placeholder="Ex: Comi fora 2 vezes no fim de semana, priorizei carnes grelhadas e salada..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 4: Nutrição -->
+            <section id="secao-4" class="scroll-mt-24 bg-white rounded-3xl p-6 sm:p-8 border border-hmv-border card-elevated">
+                <div class="flex items-center gap-3.5 pb-5 mb-6 border-b border-hmv-light">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-hmv-blue to-hmv-sky text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-sm">4</span>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-hmv-navy">4. Nutrição</h3>
+                        <p class="text-xs text-hmv-muted">Aporte proteico, praticidade e planejamento semanal</p>
+                    </div>
+                </div>
+
+                <div class="space-y-7">
+                    <!-- Pergunta 14 -->
+                    <div>
+                        <label for="q14" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">14.</span> Conseguiu bater a meta de proteínas em todas as refeições principais ou sentiu dificuldade em algum horário específico (ex.: café da manhã ou lanches)?
+                        </label>
+                        <textarea id="q14" rows="3" placeholder="Ex: Consegui bater em todas, mas no café da manhã tenho menos apetite para proteínas..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 15 -->
+                    <div>
+                        <label for="q15" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">15.</span> Conseguiu realizar as refeições ou sentiu falta de opções práticas na correria da semana?
+                        </label>
+                        <textarea id="q15" rows="3" placeholder="Conte se precisa de sugestões mais rápidas para dias corridos..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Pergunta 16 -->
+                    <div>
+                        <label for="q16" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                            <span class="text-hmv-blue font-extrabold mr-1">16.</span> Houve algum momento em que a falta de planejamento levou a escolhas fora do plano alimentar?
+                        </label>
+                        <textarea id="q16" rows="3" placeholder="Ex: Quando não deixei marmita pronta na quarta-feira..."
+                            class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 5: Percepção Corporal -->
+            <section id="secao-5" class="scroll-mt-24 bg-white rounded-3xl p-6 sm:p-8 border border-hmv-border card-elevated">
+                <div class="flex items-center gap-3.5 pb-5 mb-6 border-b border-hmv-light">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-hmv-blue to-hmv-sky text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-sm">5</span>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-hmv-navy">5. Percepção Corporal</h3>
+                        <p class="text-xs text-hmv-muted">Medidas visuais, caimento das roupas e retenção hídrica</p>
+                    </div>
+                </div>
+
+                <div>
+                    <!-- Pergunta 17 -->
+                    <label for="q17" class="block text-sm sm:text-base font-semibold text-hmv-navy mb-2">
+                        <span class="text-hmv-blue font-extrabold mr-1">17.</span> Como sente o caimento das roupas (cintura, quadril, braços/pernas) e a retenção de líquidos ao final do dia?
+                    </label>
+                    <textarea id="q17" rows="3" placeholder="Ex: Senti a cintura mais desinchada e as roupas mais confortáveis..."
+                        class="w-full px-4 py-3 rounded-2xl bg-hmv-ice/70 border border-hmv-border text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 focus:border-hmv-blue focus:bg-white transition-all text-sm leading-relaxed"></textarea>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 6: Sinais do corpo -->
+            <section id="secao-6" class="scroll-mt-24 bg-white rounded-3xl p-6 sm:p-8 border border-hmv-border card-elevated">
+                <div class="flex items-center gap-3.5 pb-4 mb-4 border-b border-hmv-light">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-hmv-blue to-hmv-sky text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-sm">6</span>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-hmv-navy">6. Sinais do corpo</h3>
+                        <p class="text-xs text-hmv-muted">Monitoramento clínico e sintomas físicos</p>
+                    </div>
+                </div>
+
+                <div class="bg-hmv-light border border-hmv-sky/40 rounded-2xl px-4 py-3 mb-6 text-xs sm:text-sm text-hmv-navy flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-hmv-blue text-white text-xs font-bold flex items-center justify-center shrink-0">i</span>
+                    <span>Marque <strong>Sim</strong> ou <strong>Não</strong> e, se <strong>Sim</strong>, diga quando e com que frequência:</span>
+                </div>
+
+                <div class="space-y-5">
+                    <!-- Pergunta 18 -->
+                    <div class="p-4 sm:p-5 rounded-2xl bg-hmv-ice/80 border border-hmv-border transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <p class="text-sm sm:text-base font-semibold text-hmv-navy">
+                                <span class="text-hmv-blue font-extrabold mr-1">18.</span> Cansaço fora do habitual, fraqueza nos treinos ou falta de ar ao esforço?
+                            </p>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <button type="button" onclick="toggleSignal('q18', 'Não')" id="q18-no"
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light transition-all">
+                                    Não
+                                </button>
+                                <button type="button" onclick="toggleSignal('q18', 'Sim')" id="q18-yes"
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light transition-all">
+                                    Sim
+                                </button>
+                            </div>
+                        </div>
+                        <div id="q18-detail-wrap" class="hidden mt-4 pt-3 border-t border-hmv-border fade-slide-in">
+                            <label for="q18-detail" class="block text-xs font-bold text-hmv-blue mb-1.5">Quando e com que frequência?</label>
+                            <input type="text" id="q18-detail" placeholder="Descreva quando ocorreu e com que frequência..."
+                                class="w-full px-4 py-2.5 rounded-xl bg-white border border-hmv-sky text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 19 -->
+                    <div class="p-4 sm:p-5 rounded-2xl bg-hmv-ice/80 border border-hmv-border transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <p class="text-sm sm:text-base font-semibold text-hmv-navy">
+                                <span class="text-hmv-blue font-extrabold mr-1">19.</span> Câimbras, espasmos, tremores, formigamento ou dormência?
+                            </p>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <button type="button" onclick="toggleSignal('q19', 'Não')" id="q19-no"
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light transition-all">
+                                    Não
+                                </button>
+                                <button type="button" onclick="toggleSignal('q19', 'Sim')" id="q19-yes"
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light transition-all">
+                                    Sim
+                                </button>
+                            </div>
+                        </div>
+                        <div id="q19-detail-wrap" class="hidden mt-4 pt-3 border-t border-hmv-border fade-slide-in">
+                            <label for="q19-detail" class="block text-xs font-bold text-hmv-blue mb-1.5">Quando e com que frequência?</label>
+                            <input type="text" id="q19-detail" placeholder="Descreva quando ocorreu e com que frequência..."
+                                class="w-full px-4 py-2.5 rounded-xl bg-white border border-hmv-sky text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 20 -->
+                    <div class="p-4 sm:p-5 rounded-2xl bg-hmv-ice/80 border border-hmv-border transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <p class="text-sm sm:text-base font-semibold text-hmv-navy">
+                                <span class="text-hmv-blue font-extrabold mr-1">20.</span> Queda de cabelo, unhas fracas, pele muito seca, rachaduras nos cantos da boca ou língua dolorida?
+                            </p>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <button type="button" onclick="toggleSignal('q20', 'Não')" id="q20-no"
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light transition-all">
+                                    Não
+                                </button>
+                                <button type="button" onclick="toggleSignal('q20', 'Sim')" id="q20-yes"
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light transition-all">
+                                    Sim
+                                </button>
+                            </div>
+                        </div>
+                        <div id="q20-detail-wrap" class="hidden mt-4 pt-3 border-t border-hmv-border fade-slide-in">
+                            <label for="q20-detail" class="block text-xs font-bold text-hmv-blue mb-1.5">Quando e com que frequência?</label>
+                            <input type="text" id="q20-detail" placeholder="Descreva o sinal observado, quando começou e a frequência..."
+                                class="w-full px-4 py-2.5 rounded-xl bg-white border border-hmv-sky text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Pergunta 21 -->
+                    <div class="p-4 sm:p-5 rounded-2xl bg-hmv-ice/80 border border-hmv-border transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <p class="text-sm sm:text-base font-semibold text-hmv-navy">
+                                <span class="text-hmv-blue font-extrabold mr-1">21.</span> Mudança em suplementos ou medicamentos de uso contínuo?
+                            </p>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <button type="button" onclick="toggleSignal('q21', 'Não')" id="q21-no"
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light transition-all">
+                                    Não
+                                </button>
+                                <button type="button" onclick="toggleSignal('q21', 'Sim')" id="q21-yes"
+                                    class="px-5 py-2.5 rounded-xl text-sm font-bold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light transition-all">
+                                    Sim
+                                </button>
+                            </div>
+                        </div>
+                        <div id="q21-detail-wrap" class="hidden mt-4 pt-3 border-t border-hmv-border fade-slide-in">
+                            <label for="q21-detail" class="block text-xs font-bold text-hmv-blue mb-1.5">Qual mudança, quando e com que frequência?</label>
+                            <input type="text" id="q21-detail" placeholder="Informe qual suplemento/medicamento mudou, quando e a frequência..."
+                                class="w-full px-4 py-2.5 rounded-xl bg-white border border-hmv-sky text-hmv-navy placeholder-hmv-muted/60 focus:outline-none focus:ring-2 focus:ring-hmv-blue/30 text-sm">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Barra de Ações Finais -->
+            <div class="pt-2 pb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button type="button" onclick="requestClearForm()"
+                    class="w-full sm:w-auto px-5 py-3.5 rounded-2xl text-xs font-bold text-hmv-muted hover:text-red-700 hover:bg-red-50 border border-transparent hover:border-red-200 transition-all flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    Limpar respostas
+                </button>
+
+                <button type="button" onclick="generateSummary()"
+                    class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-hmv-navy via-hmv-deep to-hmv-blue hover:opacity-95 text-white font-bold text-base shadow-lg shadow-hmv-navy/20 hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5">
+                    <span>Finalizar e Gerar Resumo</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="border-t border-hmv-border bg-white py-6 text-center text-xs text-hmv-muted">
+        <p><strong class="text-hmv-navy">HMV Signature</strong> • Atendimento Nutricional Personalizado • Plano Premium - Upgrade</p>
+    </footer>
+
+    <!-- Modal de Confirmação para Limpar -->
+    <div id="confirm-clear-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-hmv-navy/60 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 border border-hmv-border shadow-2xl fade-slide-in">
+            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-hmv-navy mb-2">Limpar todas as respostas?</h3>
+            <p class="text-sm text-hmv-muted mb-6 leading-relaxed">
+                Tem certeza que deseja apagar tudo o que foi preenchido neste check-in? Essa ação não pode ser desfeita.
+            </p>
+            <div class="flex items-center justify-end gap-3">
+                <button type="button" onclick="closeClearModal()" class="px-5 py-2.5 rounded-xl text-sm font-bold text-hmv-navy bg-hmv-light hover:bg-hmv-border/60 transition-colors">
+                    Cancelar
+                </button>
+                <button type="button" onclick="confirmClearForm()" class="px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-red-600 hover:bg-red-700 transition-colors">
+                    Sim, limpar tudo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resumo e Envio -->
+    <div id="summary-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-hmv-navy/65 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full my-auto border border-hmv-border shadow-2xl overflow-hidden flex flex-col max-h-[90vh] fade-slide-in">
+
+            <!-- Cabeçalho do Modal -->
+            <div class="bg-gradient-to-r from-hmv-navy via-hmv-deep to-hmv-blue px-6 py-5 text-white flex items-center justify-between shrink-0">
+                <div>
+                    <span class="text-xs uppercase tracking-wider text-hmv-sky font-bold">HMV Signature • Plano Premium - Upgrade</span>
+                    <h3 class="font-serif text-xl sm:text-2xl font-bold">Resumo do Check-in</h3>
+                </div>
+                <button type="button" onclick="closeSummaryModal()" aria-label="Fechar resumo" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Corpo do Resumo -->
+            <div class="p-5 sm:p-6 overflow-y-auto space-y-4 bg-hmv-ice flex-grow">
+                <p class="text-xs sm:text-sm text-hmv-navy bg-hmv-light border border-hmv-sky/40 rounded-2xl p-3.5">
+                    Tudo pronto! Clique em <strong>Enviar pelo WhatsApp</strong> ou em <strong>Copiar Resumo Completo</strong> para compartilhar suas respostas com a equipe <strong>HMV Signature</strong>.
+                </p>
+
+                <div>
+                    <textarea id="summary-output" readonly rows="13"
+                        class="w-full p-4 rounded-2xl bg-white border border-hmv-border text-hmv-navy font-sans text-xs sm:text-sm leading-relaxed focus:outline-none resize-none shadow-inner"></textarea>
+                </div>
+            </div>
+
+            <!-- Rodapé do Modal -->
+            <div class="p-4 sm:p-6 bg-white border-t border-hmv-border flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+                <button type="button" onclick="closeSummaryModal()"
+                    class="w-full sm:w-auto px-5 py-3 rounded-2xl text-sm font-bold text-hmv-navy bg-hmv-light hover:bg-hmv-border/60 transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    Revisar
+                </button>
+
+                <div class="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-2.5">
+                    <button type="button" id="copy-btn" onclick="copySummary()"
+                        class="w-full sm:w-auto px-5 py-3 rounded-2xl text-sm font-bold text-hmv-navy bg-hmv-light hover:bg-hmv-sky/25 border border-hmv-sky/50 transition-all flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4 text-hmv-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        <span id="copy-btn-text">Copiar Resumo Completo</span>
+                    </button>
+
+                    <button type="button" onclick="sendWhatsApp()"
+                        class="w-full sm:w-auto px-6 py-3 rounded-2xl text-sm font-bold text-white bg-[#25D366] hover:bg-[#1ebe5d] shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/></svg>
+                        Enviar pelo WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificação Toast Flutuante -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden items-center gap-2 bg-hmv-navy text-white text-xs sm:text-sm font-semibold px-5 py-3 rounded-full shadow-xl fade-slide-in">
+        <svg class="w-4 h-4 text-hmv-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <span id="toast-message">Resumo completo copiado!</span>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'hmv_signature_premium_upgrade_v2';
+        const memoryFallback = {};
+
+        function safeSave(key, value) {
+            memoryFallback[key] = value;
+            try {
+                window.localStorage.setItem(key, value);
+            } catch (e) {}
+        }
+
+        function safeLoad(key) {
+            try {
+                const item = window.localStorage.getItem(key);
+                if (item !== null) return item;
+            } catch (e) {}
+            return memoryFallback[key] || null;
+        }
+
+        function safeRemove(key) {
+            delete memoryFallback[key];
+            try {
+                window.localStorage.removeItem(key);
+            } catch (e) {}
+        }
+
+        const formState = {
+            patientName: '',
+            checkinDate: '',
+            q1: null,
+            q2: '',
+            q3: '',
+            q4: '',
+            q5: '',
+            q6: '',
+            q7: '',
+            q8: '',
+            q9: '',
+            q10: '',
+            q11: '',
+            q12: '',
+            q13: '',
+            q14: '',
+            q15: '',
+            q16: '',
+            q17: '',
+            q18: null,
+            q18Detail: '',
+            q19: null,
+            q19Detail: '',
+            q20: null,
+            q20Detail: '',
+            q21: null,
+            q21Detail: ''
+        };
+
+        const textKeys = ['q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15', 'q16', 'q17'];
+        const signalKeys = ['q18', 'q19', 'q20', 'q21'];
+
+        function getTodayISO() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        }
+
+        function renderScaleButtons() {
+            const container = document.getElementById('q1-scale-container');
+            if (!container) return;
+            container.innerHTML = '';
+            for (let i = 0; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.textContent = i;
+                btn.dataset.val = i;
+                btn.onclick = () => selectScale(i);
+                btn.className = 'scale-btn py-2.5 rounded-xl text-sm font-extrabold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light hover:border-hmv-blue transition-all focus:outline-none';
+                container.appendChild(btn);
+            }
+        }
+
+        function selectScale(val) {
+            formState.q1 = val;
+            updateScaleUI();
+            saveState();
+            updateProgress();
+        }
+
+        function updateScaleUI() {
+            const buttons = document.querySelectorAll('.scale-btn');
+            const feedback = document.getElementById('q1-feedback');
+            buttons.forEach(btn => {
+                const num = parseInt(btn.dataset.val, 10);
+                if (formState.q1 === num) {
+                    btn.className = 'scale-btn py-2.5 rounded-xl text-sm font-extrabold border border-hmv-blue bg-gradient-to-br from-hmv-blue to-hmv-sky text-white shadow-md shadow-hmv-blue/25 transform scale-105 transition-all focus:outline-none';
+                } else {
+                    btn.className = 'scale-btn py-2.5 rounded-xl text-sm font-extrabold border border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light hover:border-hmv-blue transition-all focus:outline-none';
+                }
+            });
+
+            if (formState.q1 !== null) {
+                let label = `Nota selecionada: ${formState.q1}/10`;
+                if (formState.q1 >= 9) label += ' ✦ Excelente!';
+                else if (formState.q1 >= 7) label += ' ✦ Muito bom!';
+                else if (formState.q1 >= 5) label += ' • Bom caminho';
+                feedback.textContent = label;
+            } else {
+                feedback.textContent = '';
+            }
+        }
+
+        function updateWaterChipsUI() {
+            const chips = document.querySelectorAll('.water-chip');
+            chips.forEach(chip => {
+                if (chip.dataset.val === formState.q5) {
+                    chip.className = 'water-chip px-3.5 py-1.5 rounded-full text-xs font-bold bg-hmv-blue border border-hmv-blue text-white shadow-sm transition-all';
+                } else {
+                    chip.className = 'water-chip px-3.5 py-1.5 rounded-full text-xs font-bold bg-hmv-light border border-hmv-sky/40 text-hmv-navy hover:bg-hmv-blue hover:text-white transition-all';
+                }
+            });
+        }
+
+        function toggleSignal(qKey, choice) {
+            formState[qKey] = choice;
+            updateSignalUI(qKey);
+            saveState();
+            updateProgress();
+
+            if (choice === 'Sim') {
+                const detailInput = document.getElementById(`${qKey}-detail`);
+                if (detailInput) {
+                    setTimeout(() => detailInput.focus(), 100);
+                }
+            }
+        }
+
+        function updateSignalUI(qKey) {
+            const choice = formState[qKey];
+            const noBtn = document.getElementById(`${qKey}-no`);
+            const yesBtn = document.getElementById(`${qKey}-yes`);
+            const wrap = document.getElementById(`${qKey}-detail-wrap`);
+
+            const baseBtn = 'px-5 py-2.5 rounded-xl text-sm font-bold border transition-all ';
+            noBtn.className = baseBtn + (choice === 'Não'
+                ? 'border-hmv-navy bg-hmv-navy text-white shadow-sm'
+                : 'border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light');
+
+            yesBtn.className = baseBtn + (choice === 'Sim'
+                ? 'border-hmv-blue bg-gradient-to-r from-hmv-blue to-hmv-sky text-white shadow-sm'
+                : 'border-hmv-border bg-white text-hmv-navy hover:bg-hmv-light');
+
+            if (choice === 'Sim') {
+                wrap.classList.remove('hidden');
+            } else {
+                wrap.classList.add('hidden');
+            }
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            const total = 21;
+
+            if (formState.q1 !== null) answered++;
+            textKeys.forEach(k => {
+                if (formState[k] && formState[k].trim().length > 0) answered++;
+            });
+            signalKeys.forEach(k => {
+                if (formState[k] === 'Não' || formState[k] === 'Sim') answered++;
+            });
+
+            const pct = Math.round((answered / total) * 100);
+            document.getElementById('progress-bar').style.width = `${pct}%`;
+            document.getElementById('progress-text').textContent = `${answered} de ${total} respondidas`;
+        }
+
+        function saveState() {
+            safeSave(STORAGE_KEY, JSON.stringify(formState));
+        }
+
+        function loadState() {
+            const raw = safeLoad(STORAGE_KEY);
+            if (raw) {
+                try {
+                    const parsed = JSON.parse(raw);
+                    Object.assign(formState, parsed);
+                } catch (e) {}
+            }
+
+            if (!formState.checkinDate) {
+                formState.checkinDate = getTodayISO();
+            }
+
+            document.getElementById('patient-name').value = formState.patientName || '';
+            document.getElementById('checkin-date').value = formState.checkinDate;
+
+            textKeys.forEach(k => {
+                const el = document.getElementById(k);
+                if (el) el.value = formState[k] || '';
+            });
+
+            signalKeys.forEach(k => {
+                const detailEl = document.getElementById(`${k}-detail`);
+                if (detailEl) detailEl.value = formState[`${k}Detail`] || '';
+                updateSignalUI(k);
+            });
+
+            updateScaleUI();
+            updateWaterChipsUI();
+            updateProgress();
+        }
+
+        function bindInputs() {
+            document.getElementById('patient-name').addEventListener('input', (e) => {
+                formState.patientName = e.target.value;
+                saveState();
+            });
+
+            document.getElementById('checkin-date').addEventListener('change', (e) => {
+                formState.checkinDate = e.target.value;
+                saveState();
+            });
+
+            textKeys.forEach(k => {
+                const el = document.getElementById(k);
+                if (el) {
+                    el.addEventListener('input', (e) => {
+                        formState[k] = e.target.value;
+                        if (k === 'q5') updateWaterChipsUI();
+                        saveState();
+                        updateProgress();
+                    });
+                }
+            });
+
+            document.querySelectorAll('.water-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const val = chip.dataset.val;
+                    formState.q5 = val;
+                    document.getElementById('q5').value = val;
+                    updateWaterChipsUI();
+                    saveState();
+                    updateProgress();
+                });
+            });
+
+            signalKeys.forEach(k => {
+                const detailEl = document.getElementById(`${k}-detail`);
+                if (detailEl) {
+                    detailEl.addEventListener('input', (e) => {
+                        formState[`${k}Detail`] = e.target.value;
+                        saveState();
+                    });
+                }
+            });
+        }
+
+        function formatDateBR(isoDate) {
+            if (!isoDate) return 'Não informada';
+            const parts = isoDate.split('-');
+            if (parts.length !== 3) return isoDate;
+            return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        }
+
+        function valOrFallback(val) {
+            return (val && val.trim().length > 0) ? val.trim() : 'Não respondido';
+        }
+
+        function formatSignalAnswer(choice, detail) {
+            if (!choice) return 'Não respondido';
+            if (choice === 'Não') return 'Não';
+            const cleanDetail = (detail && detail.trim().length > 0) ? detail.trim() : 'Detalhes não informados';
+            return `Sim — ${cleanDetail}`;
+        }
+
+        function generateSummary() {
+            const nameText = formState.patientName.trim() ? formState.patientName.trim() : 'Não informado';
+            const dateText = formatDateBR(formState.checkinDate);
+            const q1Answer = formState.q1 !== null ? `${formState.q1}/10` : 'Não respondido';
+
+            const summary = [
+                `✦ *HMV Signature — Plano Premium - Upgrade*`,
+                `_Atendimento Nutricional Personalizado | Check-in de Acompanhamento_`,
+                ``,
+                `👤 *Nome do Paciente:* ${nameText}`,
+                `📅 *Data do Check-in:* ${dateText}`,
+                `━━━━━━━━━━━━━━━━━━━━`,
+                `📋 *1. ADESÃO AO PLANO*`,
+                `*1. Nota de adesão (0 a 10):* ${q1Answer}`,
+                `*2. Refeições puladas ou trocadas:* ${valOrFallback(formState.q2)}`,
+                `*3. Alimento/preparação não aceito:* ${valOrFallback(formState.q3)}`,
+                `*4. Mais fácil e mais difícil:* ${valOrFallback(formState.q4)}`,
+                ``,
+                `💧 *2. ROTINA*`,
+                `*5. Água (média diária):* ${valOrFallback(formState.q5)}`,
+                `*6. Intestinal e desconfortos:* ${valOrFallback(formState.q6)}`,
+                `*7. Sono (horários e qualidade):* ${valOrFallback(formState.q7)}`,
+                `*8. Álcool:* ${valOrFallback(formState.q8)}`,
+                `*9. Exercícios, cargas e recuperação:* ${valOrFallback(formState.q9)}`,
+                ``,
+                `🍽️ *3. APETITE E COMPORTAMENTO*`,
+                `*10. Fome e saciedade:* ${valOrFallback(formState.q10)}`,
+                `*11. Dificuldade com volume do plano:* ${valOrFallback(formState.q11)}`,
+                `*12. Comer por ansiedade/estresse/tédio/tristeza:* ${valOrFallback(formState.q12)}`,
+                `*13. Finais de semana e refeições fora:* ${valOrFallback(formState.q13)}`,
+                ``,
+                `🥗 *4. NUTRIÇÃO*`,
+                `*14. Meta de proteínas nas refeições:* ${valOrFallback(formState.q14)}`,
+                `*15. Praticidade na correria da semana:* ${valOrFallback(formState.q15)}`,
+                `*16. Falta de planejamento:* ${valOrFallback(formState.q16)}`,
+                ``,
+                `👗 *5. PERCEPÇÃO CORPORAL*`,
+                `*17. Caimento das roupas e retenção:* ${valOrFallback(formState.q17)}`,
+                ``,
+                `🩺 *6. SINAIS DO CORPO*`,
+                `*18. Cansaço fora do habitual / fraqueza / falta de ar:* ${formatSignalAnswer(formState.q18, formState.q18Detail)}`,
+                `*19. Câimbras, espasmos, tremores ou formigamento:* ${formatSignalAnswer(formState.q19, formState.q19Detail)}`,
+                `*20. Queda de cabelo, unhas fracas, pele seca ou boca/língua:* ${formatSignalAnswer(formState.q20, formState.q20Detail)}`,
+                `*21. Mudança em suplementos ou medicamentos:* ${formatSignalAnswer(formState.q21, formState.q21Detail)}`
+            ].join('\n');
+
+            document.getElementById('summary-output').value = summary;
+
+            const modal = document.getElementById('summary-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSummaryModal() {
+            const modal = document.getElementById('summary-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function copySummary() {
+            const textarea = document.getElementById('summary-output');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+
+            let success = false;
+            try {
+                success = document.execCommand('copy');
+            } catch (err) {}
+
+            if (success) {
+                const btnText = document.getElementById('copy-btn-text');
+                btnText.textContent = 'Copiado!';
+                showToast('Resumo completo copiado!');
+                setTimeout(() => {
+                    btnText.textContent = 'Copiar Resumo Completo';
+                }, 2500);
+            }
+        }
+
+        function sendWhatsApp() {
+            const text = document.getElementById('summary-output').value;
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
+
+        function requestClearForm() {
+            const modal = document.getElementById('confirm-clear-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeClearModal() {
+            const modal = document.getElementById('confirm-clear-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function confirmClearForm() {
+            safeRemove(STORAGE_KEY);
+            formState.patientName = '';
+            formState.checkinDate = getTodayISO();
+            formState.q1 = null;
+            textKeys.forEach(k => formState[k] = '');
+            signalKeys.forEach(k => {
+                formState[k] = null;
+                formState[`${k}Detail`] = '';
+            });
+            loadState();
+            closeClearModal();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showToast('Formulário limpo com sucesso.');
+        }
+
+        renderScaleButtons();
+        loadState();
+        bindInputs();
+    </script>
+</body>
+</html>
